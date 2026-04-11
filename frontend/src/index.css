@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-slate-800 font-sans min-h-screen flex flex-col;
+  }
+  #root {
+    @apply flex flex-col min-h-screen;
+  }
+}
+
+@layer components {
+  /* Backward compatibility for older UI until full rewrite */
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+  
+  .glass {
+    @apply bg-white border border-slate-100 shadow-sm rounded-lg;
+  }
+  
+  .btn {
+    @apply bg-secondary text-white px-5 py-2.5 rounded-lg font-medium transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 inline-block text-center;
+  }
+  .btn-accent {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all;
+  }
+
+  /* Grid backwards compatibility */
+  .grid {
+    @apply grid gap-6;
+  }
+  .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .category-section {
+    @apply bg-white p-6 rounded-xl shadow-sm border border-slate-100 mb-8;
+  }
+  .category-header {
+    @apply flex justify-between items-center mb-6 border-b border-slate-100 pb-4;
+  }
+  .category-title {
+    @apply text-2xl font-semibold text-slate-800;
+  }
+}
+
+@layer utilities {
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.05)];
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.5), 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+}

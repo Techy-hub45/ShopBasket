@@ -1,0 +1,17 @@
+{
+  "name": "ecommerce-platform",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce project",
+  "scripts": {
+    "start": "npm run dev",
+    "predev": "npx -y kill-port 5000 5173 && node -e \"setTimeout(() => {}, 2000)\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && nodemon server.js",
+    "client": "npm run vite --prefix frontend",
+    "data:import": "cd backend && node seeder.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
