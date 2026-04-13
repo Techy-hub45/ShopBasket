@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -15,6 +16,9 @@ const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 // Connect to Database
+// connectDB();
+// const connectDB = require("./config/db");
+
 connectDB();
 
 const app = express();
@@ -36,4 +40,9 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export app for serverless deployment
+module.exports = app;
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
