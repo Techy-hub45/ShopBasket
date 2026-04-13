@@ -9,7 +9,7 @@
     "server": "cd backend && nodemon server.js",
     "client": "npm run vite --prefix frontend",
     "data:import": "cd backend && node seeder.js",
-    "postinstall": "cd frontend && npm install && cd ../backend && npm install",
+    "postinstall": "cd frontend && npm install --legacy-peer-deps && cd ../backend && npm install --legacy-peer-deps",
     "build": "cd frontend && npm run build"
   },
   "devDependencies": {
