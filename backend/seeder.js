@@ -4,10 +4,6 @@ const Product = require('./models/Product');
 const User = require('./models/User');
 const connectDB = require('./config/db');
 
-const path = require('path');
-dotenv.config({ path: path.resolve(__dirname, '.env') });
-connectDB();
-
 const DUMMY_IMAGES = {
   'Electrical Appliances': [
     'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=800',
@@ -363,11 +359,11 @@ const seedData = async () => {
 
     await Product.insertMany(products);
     console.log(`Massive Data Import Complete: ${products.length} Products Injected!`);
-    process.exit();
+    return products.length;
   } catch (error) {
     console.error(error);
-    process.exit(1);
+    throw error;
   }
 };
 
-seedData();
+module.exports = seedData;

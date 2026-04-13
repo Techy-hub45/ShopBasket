@@ -35,6 +35,16 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/banners', bannerRoutes);
 app.use('/api/payment', paymentRoutes);
 
+app.get('/api/seed', async (req, res) => {
+  try {
+    const seedData = require('./seeder');
+    const count = await seedData();
+    res.send(`Database Seeded Successfully! ${count} Products Injected.`);
+  } catch (error) {
+    res.status(500).send(`Seeding Failed: ${error.message}`);
+  }
+});
+
 app.get('/', (req, res) => {
   res.send('E-Commerce API is running...');
 });

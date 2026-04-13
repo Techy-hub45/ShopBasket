@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHeart, FaTruck, FaShieldAlt, FaLeaf } from 'react-icons/fa';
+import myFounderImage from '../assets/my1.jpg';
 
 const About = () => {
   return (
@@ -48,10 +49,8 @@ const About = () => {
       >
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 group-hover:bg-primary/10 transition-colors duration-500"></div>
         <div className="w-40 h-40 sm:w-48 sm:h-48 shrink-0 rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10 bg-slate-100">
-           {/* The image will be loaded from the public/images directory */}
            <img 
-              src="/images/my1.jpg" 
-              onError={(e) => { e.target.src = '/images/my1.jpg'; }} 
+              src={myFounderImage}
               alt="Sanath P." 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
            />
