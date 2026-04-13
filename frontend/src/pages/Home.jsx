@@ -47,6 +47,34 @@ const Home = () => {
 
   return (
     <div className="w-full pb-16">
+      
+      {/* TEMPORARY SEED BUTTON */}
+      <div className="mt-4 mb-8 text-center bg-blue-100 p-8 rounded-xl shadow-lg border-2 border-blue-400">
+        <h2 className="text-2xl font-bold text-blue-800 mb-4">Final Deployment Step (Action Required)</h2>
+        <p className="mb-6 font-medium text-blue-700">Click the button below exactly once to spawn all your products and your admin account into the live Cloud Database. Wait 15 seconds after clicking.</p>
+        <button 
+          onClick={async (e) => {
+             const btn = e.currentTarget;
+             btn.innerText = "⏳ Seeding Database... Please wait, this takes about 15 seconds!";
+             btn.disabled = true;
+             btn.classList.add("opacity-75");
+             try {
+                const res = await axios.get('/api/seed');
+                alert(res.data);
+                window.location.reload();
+             } catch(err) {
+                alert("Error: " + (err.response?.data || err.message));
+                btn.innerText = "🚀 ONE-CLICK SETUP: SEED LIVE DATABASE";
+                btn.disabled = false;
+                btn.classList.remove("opacity-75");
+             }
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-black text-xl py-4 px-12 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all hover:scale-105 active:scale-95"
+        >
+          🚀 ONE-CLICK SETUP: SEED LIVE DATABASE
+        </button>
+      </div>
+
       {!keyword && <OffersSlider />}
 
       {!keyword && dealsOfTheDay.length > 0 && (
