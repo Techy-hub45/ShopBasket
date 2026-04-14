@@ -1,5 +1,5 @@
 # 🚀 ShopBasket – Smart MERN eCommerce Platform
-Link:https://shop-basket-9anj.vercel.app/
+Link : https://shop-basket-9anj.vercel.app/
 
 
 > 🛒 A modern, full-stack eCommerce application with real-time location detection and seamless user experience.
@@ -25,6 +25,7 @@ This project demonstrates real-world full-stack development skills including API
 - 📍 **Live Location Detection (Maps Integration)**
 - ⚡ **Fast & Responsive UI with Tailwind CSS**
 - 🔄 **RESTful API Architecture**
+- 🤖 **Ai Integrated ChatBot for Guiding through out the website**
 
 ---
 
